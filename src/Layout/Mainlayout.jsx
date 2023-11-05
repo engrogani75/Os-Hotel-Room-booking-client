@@ -9,3 +9,5 @@ const Mainlayout = () => {
 };
 
 export default Mainlayout;
+
+// The Hotel book clientside project basic setup has created
