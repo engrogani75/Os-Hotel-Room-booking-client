@@ -1,13 +1,16 @@
+import { Outlet } from "react-router-dom";
+import Nav from "../Component/Navbar/Nav";
 
 
 const Mainlayout = () => {
     return (
-        <div>
-            <h1>Welcome</h1>
+        <div className="w-11/12 mx-auto">
+            <Nav></Nav>
+            <Outlet></Outlet>
         </div>
     );
 };
 
 export default Mainlayout;
 
-// The Hotel book clientside project basic setup has created
+// https://cozystay.loftocean.com/island-resort/
