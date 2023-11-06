@@ -1,7 +1,31 @@
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useContext } from "react";
+import Swal from 'sweetalert2'
 
 
 const Nav = () => {
+  const {user, logout} = useContext(AuthContext)
+
+
+  const logoutHandle = () =>{
+    logout()
+    .then(() => {
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Logou',
+        text: 'Logout has been sucessfully',
+      })
+
+    })
+
+    .catch((err) =>{
+      console.error(err);
+    })
+  }
+
+
     return (
         <div>
             <div className="navbar bg-base-100 font-bold text-xl shadow-lg">
@@ -61,8 +85,21 @@ const Nav = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <button className="bg-orange-600 px-4 py-2 border-2 rounded-xl text-white hover:bg-transparent hover:text-purple-500 duration-75">
-      <Link to='/login'>Login</Link></button>
+
+
+  {
+                user ? <>
+                <div><img src={user.photoURL} className=" h-5 w-5 md:h-10 md:w-10 rounded-full mr-2" alt="" /></div>
+                <span className="text-[11px] lg:text-xl">{user.displayName}</span>
+                <a onClick={logoutHandle} href="#" className="text-[11px] lg:text-xl ml-4 text-white font-bold hover:text-gray-400">Log Out</a> 
+                </>: <>
+                <Link to={"/login"}>
+                  <button className="bg-orange-600 px-4 py-2 border-2 rounded-xl text-white hover:bg-transparent hover:text-purple-500 duration-75">
+                    Login</button>
+                    </Link>
+                </>
+              }
+
   </div>
 </div>
         </div>
