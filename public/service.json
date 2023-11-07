@@ -1,0 +1,123 @@
+[
+    {
+      "RoomDescription": "Deluxe Suite",
+      "Image": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "450 sq. ft",
+      "Availability": 3,
+      "Discount": 10,
+      "Price": 200
+    },
+    {
+      "RoomDescription": "Standard Room",
+      "Image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "300 sq. ft",
+      "Availability": 2,
+      "Discount": 15,
+      "Price": 150
+    },
+    {
+      "RoomDescription": "Executive Suite",
+      "Image": "https://plus.unsplash.com/premium_photo-1678297270385-ad5067126607?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dg",
+      "RoomSize": "550 sq. ft",
+      "Availability": 2,
+      "Discount": 0,
+      "Price": 250
+    },
+    {
+      "RoomDescription": "Family Suite",
+      "Image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "600 sq. ft",
+      "Availability": 3,
+      "Discount": 20,
+      "Price": 300
+    },
+    {
+      "RoomDescription": "Ocean View Room",
+      "Image": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "400 sq. ft",
+      "Availability": 2,
+      "Discount": 5,
+      "Price": 180
+    },
+    {
+      "RoomDescription": "Penthouse Suite",
+      "Image": "https://images.unsplash.com/flagged/photo-1556438758-8d49568ce18e?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "750 sq. ft",
+      "Availability": 4,
+      "Discount": 10,
+      "Price": 400
+    },
+    {
+      "RoomDescription": "Standard Double Room",
+      "Image": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "350 sq. ft",
+      "Availability": 1,
+      "Discount": 12,
+      "Price": 170
+    },
+    {
+      "RoomDescription": "Luxury Villa",
+      "Image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "800 sq. ft",
+      "Availability": 5,
+      "Discount": 15,
+      "Price": 600
+    },
+    {
+      "RoomDescription": "Business Suite",
+      "Image": "https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "500 sq. ft",
+      "Availability": 2,
+      "Discount": 0,
+      "Price": 220
+    },
+    {
+      "RoomDescription": "Economy Room",
+      "Image": "https://images.unsplash.com/photo-1605346434674-a440ca4dc4c0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "250 sq. ft",
+      "Availability": 1,
+      "Discount": 8,
+      "Price": 120
+    },
+    {
+      "RoomDescription": "Mountain View Suite",
+      "Image": "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "500 sq. ft",
+      "Availability": 2,
+      "Discount": 10,
+      "Price": 280
+    },
+    {
+      "RoomDescription": "Deluxe Twin Room",
+      "Image": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?q=80&w=1827&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "400 sq. ft",
+      "Availability": 2,
+      "Discount": 15,
+      "Price": 160
+    },
+    {
+      "RoomDescription": "Family Cabin",
+      "Image": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dhttps://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "700 sq. ft",
+      "Availability": 4,
+      "Discount": 10,
+      "Price": 350
+    },
+    {
+      "RoomDescription": "Presidential Suite",
+      "Image": "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "1000 sq. ft",
+      "Availability": 6,
+      "Discount": 25,
+      "Price": 800
+    },
+    {
+      "RoomDescription": "Beachfront Bungalow",
+      "Image": "https://images.unsplash.com/photo-1631049421450-348ccd7f8949?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "RoomSize": "900 sq. ft",
+      "Availability": 5,
+      "Discount": 0,
+      "Price": 450
+    }
+  ]
+  

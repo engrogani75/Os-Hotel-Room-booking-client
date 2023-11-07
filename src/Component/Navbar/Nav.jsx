@@ -71,7 +71,7 @@ const Nav = () => {
 
       <li>
       <NavLink
-  to="/Room">
+  to="/rooms">
   Room
 </NavLink>
       </li>
