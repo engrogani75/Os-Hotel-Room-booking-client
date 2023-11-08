@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, Navigate, useLoaderData } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../../Provider/AuthProvider';
@@ -94,7 +94,7 @@ const bookHandle = (e) => {
  }
 
  else{
- alert('Pls Login')
+  return <Navigate to='/login' replace></Navigate>
  }
  
 

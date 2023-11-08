@@ -9,6 +9,7 @@ import Registation from "../Accounts/Registation/Registation";
 import Room from "../Pages/Room/Room";
 import RoomDetails from "../Pages/Room/RoomDetails/RoomDetails";
 import MyBook from "../Pages/MyBook/MyBook";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
     {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
 
         {
           path: "/my-booking",
-          element: <MyBook></MyBook>,
+          element: <PrivateRouter><MyBook></MyBook></PrivateRouter>,
         }
 
 
