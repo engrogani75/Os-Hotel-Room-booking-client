@@ -83,7 +83,7 @@ const handlePriceFilter = (e) =>{
     </label>
   </div>
 
-  <button type="submit" className='btn btn-primary'>Apply Filter</button>
+  <button type="submit" className='btn btn-success mt-4'>Apply Filter</button>
 </form>
     </div>
 

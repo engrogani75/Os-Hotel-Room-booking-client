@@ -7,7 +7,7 @@ const Gallery = ({img}) => {
     return (
         <div>
             <figure>
-                <Link to={`/rooms/room-details/${_id}`}><img src={Image} className="h-80 object-cover" alt="" /></Link>
+                <Link to={`/rooms/${_id}`}><img src={Image} className="h-80 object-cover" alt="" /></Link>
 
             </figure>
         </div>
