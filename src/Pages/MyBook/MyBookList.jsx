@@ -1,7 +1,9 @@
 import React from 'react';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
-const MyBookList = ({roomBook}) => {
-    const {Image, price, RoomDescription} = roomBook || []
+const MyBookList = ({roomBook, deleteHandle}) => {
+    const {_id, id, Image, price, RoomDescription, bookDate,bookingSeat, day, chekOutDate, roomSiz, roomCost, seat, avilitySeat} = roomBook || []
     console.log(roomBook);
     return (
         <div>
@@ -12,33 +14,31 @@ const MyBookList = ({roomBook}) => {
     <tbody>
     
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
         <td>
           <div className="flex items-center space-x-3">
             <div>
-              <div className="mask  w-64 ">
+              <div className="mask  w-24 ">
                 <img src={Image} className='w-[100%]'/>
               </div>
-              <span>Room Name</span>
+              <span>{RoomDescription}</span>
             </div>
          
           </div>
         </td>
-        <td>
-         Booking Date: 
-        </td>
-        <td>Chekout Date:</td>
-        <td>Duration:</td>
-        <td>Price</td>
+      
+      
+        <td>Duration: {day} days</td>
+        <td>Seat: {bookingSeat}</td>
+        <td>Price: {price}$</td>
+        <td>After Discount: {roomCost}$</td>
         <th>
-          <button className="btn btn-ghost btn-xs">Update</button>
+          <button className="btn btn-warning btn-xs">Update</button>
         </th>
         <th>
-          <button className="btn btn-ghost btn-xs">X</button>
+          <button className="btn btn-info btn-xs" onClick={() =>deleteHandle(_id)}>X</button>
+        </th>
+        <th>
+          <Link to='/review'><button className="btn btn-info btn-xs">review</button></Link>
         </th>
       </tr>
    
