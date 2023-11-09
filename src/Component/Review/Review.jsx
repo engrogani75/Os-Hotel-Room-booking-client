@@ -60,7 +60,7 @@ const Review = () => {
   console.log(data);
   if (data.insertedId) {
     Swal.fire({
-      icon: 'sucess',
+      icon: 'success',
       title: 'add',
       text: 'review added has been sucessfully',
     })

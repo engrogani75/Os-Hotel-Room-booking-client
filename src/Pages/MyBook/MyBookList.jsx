@@ -54,3 +54,23 @@ const MyBookList = ({roomBook, deleteHandle}) => {
 };
 
 export default MyBookList;
+
+{/* <div>
+<div className="carousel carousel-end rounded-box my-6">
+
+{
+testimonials.map(review => <>
+<div className="carousel-item overflow-x-hidden">
+
+  <div className="w-64 ml-4 bottom-2 rounded-xl overflow-x-hidden">
+
+    {review.reviewText}
+  </div>
+
+</div> 
+
+</>)
+}
+
+</div>
+</div> */}
