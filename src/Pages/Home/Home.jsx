@@ -1,3 +1,4 @@
+import Feathured from "./Feathered/Feathured";
 import HotelMap from "./Map/HotelMap";
 
 import Slider from "./Slider/Slider";
@@ -11,6 +12,7 @@ const Home = () => {
             <Slider></Slider>
              <HotelMap></HotelMap>
              <Testimonials></Testimonials>
+             <Feathured></Feathured>
             
         </div>
     );
