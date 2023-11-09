@@ -38,7 +38,7 @@ const MyBookList = ({roomBook, deleteHandle}) => {
           <button className="btn btn-info btn-xs" onClick={() =>deleteHandle(_id)}>X</button>
         </th>
         <th>
-          <Link to='/review'><button className="btn btn-info btn-xs">review</button></Link>
+          <Link to={`/review/${_id}`}><button className="btn btn-info btn-xs">review</button></Link>
         </th>
       </tr>
    

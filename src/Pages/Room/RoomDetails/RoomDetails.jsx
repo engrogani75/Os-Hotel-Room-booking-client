@@ -3,6 +3,7 @@ import { Link, Navigate, useLoaderData } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const RoomDetails = () => {
@@ -73,7 +74,9 @@ const bookHandle = (e) => {
   Image
  }
 
- console.log(booking);
+//  console.log(booking);
+
+
  fetch('http://localhost:5000/booking',{
 
  method: 'POST',
@@ -86,7 +89,11 @@ const bookHandle = (e) => {
 .then(data =>{
     console.log(data);
     if (data.insertedId) {
-       alert('your service order sucessfully') 
+      Swal.fire({
+        icon: 'sucess',
+        title: 'add',
+        text: 'room added has been sucessfully',
+      })
     }
 })
 
