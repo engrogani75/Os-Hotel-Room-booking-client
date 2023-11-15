@@ -1,11 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { useContext } from "react";
 import Swal from 'sweetalert2'
+import UseAuth from "../../Provider/Hook/UseAuth";
 
 
 const Nav = () => {
-  const {user, logout} = useContext(AuthContext)
+
+
+  const {user, logout}  = UseAuth()
 
 
   const logoutHandle = () => {

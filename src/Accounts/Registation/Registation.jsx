@@ -1,13 +1,17 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
+// import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
 import { updateProfile } from "firebase/auth";
+import UseAuth from "../../Provider/Hook/UseAuth";
 
 
 const Registation = () => {
 
-    const {user, creatUser, passwordError} = useContext(AuthContext)
+   // const {user, creatUser, passwordError} = useContext(AuthContext)
+
+   const {user, creatUser, passwordError} = UseAuth()
+
 
     const loginHandle = (event) =>{
         event.preventDefault();

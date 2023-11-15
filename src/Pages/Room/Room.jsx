@@ -4,39 +4,23 @@ import { useEffect, useState } from 'react';
 import RoomTab from './RoomTab/RoomTab';
 import Gallery from './Gallery/Gallery';
 import { useLoaderData } from 'react-router-dom';
+import useAxiosHook from '../../CustoomHook/useAxiosHook';
 
 const Room = () => {
 
     const [minPrice, setMinPrice] = useState(150);
     const [maxPrice, setMaxPrice] = useState(1000);
-   
-
    const [rooms, setRooms] = useState([]);
-
-   const [bookRooms, setBookRooms] = useState([]);
-
+   const axiosUrl = useAxiosHook()
    const room = useLoaderData()
-
-    
-
-   useEffect(() =>{
-    fetch('http://localhost:5000/rooms')
-    .then(res =>res.json())
-    .then(data =>  {
-      setRooms(data)
-    
-    })
-   }, [])
+    const url = '/rooms'
 
    useEffect(() =>{
-    fetch('http://localhost:5000/booking')
-    .then(res =>res.json())
-    .then(data =>  {
-      setBookRooms(data)
+    axiosUrl.get(url)
+    .then(res => setRooms(res.data))
+   }, [url, axiosUrl])
 
-    
-    })
-   }, [])
+   
 
   
 
