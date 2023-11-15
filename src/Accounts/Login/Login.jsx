@@ -1,12 +1,12 @@
 
-import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
+import UseAuth from "../../Provider/Hook/UseAuth";
 
 
 const Login = () => {
-  const {logInUser, loginWithGoogle} = useContext(AuthContext)
+
+  const {logInUser, loginWithGoogle} = UseAuth()
   const navigate = useNavigate();
 
   const loginHandle = (event) =>{
