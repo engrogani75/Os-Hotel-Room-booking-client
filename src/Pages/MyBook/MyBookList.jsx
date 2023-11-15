@@ -3,7 +3,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 const MyBookList = ({roomBook, deleteHandle}) => {
-    const {_id, id, Image, price, RoomDescription, bookDate,bookingSeat, day, chekOutDate, roomSiz, roomCost, seat, avilitySeat} = roomBook || []
+    const {_id, id, Image, price, RoomDescription, bookDate, bookingSeat, day, chekOutDate, roomSiz, roomCost, seat, avilitySeat} = roomBook || []
 
 
 

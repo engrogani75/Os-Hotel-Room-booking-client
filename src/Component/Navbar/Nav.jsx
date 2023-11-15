@@ -8,14 +8,15 @@ const Nav = () => {
   const {user, logout} = useContext(AuthContext)
 
 
-  const logoutHandle = () =>{
+  const logoutHandle = () => {
     logout()
+
     .then(() => {
 
       Swal.fire({
         icon: 'success',
-        title: 'Logou',
-        text: 'Logout has been sucessfully',
+        title: 'Logout',
+        text: 'Logout has been successfully',
       })
 
     })
@@ -88,9 +89,9 @@ const Nav = () => {
 
 
   {
-                user ? <>
-                <div><img src={user.photoURL} className=" h-5 w-5 md:h-10 md:w-10 rounded-full mr-2" alt="" /></div>
-                <span className="text-[11px] lg:text-xl">{user.displayName}</span>
+                user?.email?<>
+                <div><img src={user?.photoURL} className=" h-5 w-5 md:h-10 md:w-10 rounded-full mr-2" alt="" /></div>
+                <span className="text-[11px] lg:text-xl">{user?.displayName}</span>
                 <a onClick={logoutHandle} href="#" className="text-[11px] lg:text-xl ml-4 text-white font-bold hover:text-gray-400">Log Out</a> 
                 </>: <>
                 <Link to={"/login"}>

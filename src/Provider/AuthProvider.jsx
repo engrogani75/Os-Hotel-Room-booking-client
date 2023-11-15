@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendSignInLinkToEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import PropTypes from 'prop-types';
 import app from "../Firbase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
@@ -64,20 +65,36 @@ const AuthProvider = ({children}) => {
       // Login with google end
 
     useEffect(() =>{
-        const unsubscrive = onAuthStateChanged(auth, (currentUser) =>{
+        const unsubscribe = onAuthStateChanged(auth, currentUser =>{
+
+             const userEmail = currentUser?.email || user?.email;
+             const loggedUser = {email: userEmail}
                setUser(currentUser)  
+               console.log("This is the Current User", currentUser);
                setLoder(false) ;
 
             //    If currentUser Exist
 
             if (currentUser) {
-                
+               
+                axios.post('http://localhost:5000/jwt', loggedUser, {withCredentials: true})
+                .then(res => {
+                    console.log('token responding', res.data);
+                })
+            }
+
+            else{
+
+                axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
+                .then(res => {
+                    console.log('token responding clear', res.data);
+                })
             }
                
         })
     
         return () =>{
-            unsubscrive();
+            unsubscribe();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])

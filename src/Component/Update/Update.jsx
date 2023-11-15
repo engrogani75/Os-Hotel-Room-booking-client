@@ -8,23 +8,23 @@ import "react-datepicker/dist/react-datepicker.css";
 const Update = () => {
     
 const bookingData = useLoaderData()
+const {user} = useContext(AuthContext)
+
+const {Image, RoomDescription, Price, RoomSize, Availability, Discount} =   bookingData || []
+
+// console.log(bookDate);
 
 
-const {Image, RoomDescription, Price, RoomSize, Availability, Discount, bookDate, chekOutDate} =   bookingData || []
+//     const [startDate, setStartDate] = useState(new Date(bookDate));
+//     const [endDate, setEndDate] = useState(new Date(chekOutDate));
 
-console.log(bookDate);
+//     const today = new Date(bookDate);
 
-
-    const [startDate, setStartDate] = useState(new Date(bookDate));
-    const [endDate, setEndDate] = useState(new Date(chekOutDate));
-
-    const today = new Date(bookDate);
-
-    const Chektoday = new Date();
+//     const Chektoday = new Date();
 
 
 
-    const {user} = useContext(AuthContext)
+    
 
 
 
@@ -32,20 +32,20 @@ console.log(bookDate);
 
 
 
-const handleDateChange = (date) => {
-    // Check if the selected date is not yesterday or earlier
-    if (date >= today) {
-      setStartDate(date);
-    }
-  };
+// const handleDateChange = (date) => {
+//     // Check if the selected date is not yesterday or earlier
+//     if (date >= today) {
+//       setStartDate(date);
+//     }
+//   };
 
 
-  const handleEndDateChange = (date) => {
-    // Check if the selected date is not yesterday or earlier
-    if (date >= Chektoday) {
-      setEndDate(date);
-    }
-  };
+//   const handleEndDateChange = (date) => {
+//     // Check if the selected date is not yesterday or earlier
+//     if (date >= Chektoday) {
+//       setEndDate(date);
+//     }
+//   };
 
 
 
@@ -77,12 +77,9 @@ const handleDateChange = (date) => {
 
           <input type="number" defaultValue={Availability} name='bed' className='w-10 text-center py-1' />
         </div>
-<DatePicker className='text-center w-24 py-1' selected={startDate}/>  to
 
-<DatePicker className='text-center w-24  py-1' selected={endDate}
-        onChange={handleEndDateChange}
-        minDate={Chektoday}
-        />
+
+
         
 
 
