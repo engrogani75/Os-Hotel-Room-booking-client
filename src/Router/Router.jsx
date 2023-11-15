@@ -11,6 +11,7 @@ import RoomDetails from "../Pages/Room/RoomDetails/RoomDetails";
 import MyBook from "../Pages/MyBook/MyBook";
 import PrivateRouter from "./PrivateRouter";
 import Review from "../Component/Review/Review";
+import Update from "../Component/Update/Update";
 
 const router = createBrowserRouter([
     {
@@ -53,7 +54,18 @@ const router = createBrowserRouter([
           path: "/review/:id",
           element: <PrivateRouter><Review></Review></PrivateRouter>,
           loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`)
-        }
+        },
+
+
+        {
+          path: "/update/:id",
+          element: <PrivateRouter><Update></Update></PrivateRouter>,  
+          loader: ({params}) => fetch(`http://localhost:5000/update/${params.id}`)
+          
+        },
+
+
+
 
       ]
     },

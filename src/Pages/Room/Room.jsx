@@ -13,6 +13,8 @@ const Room = () => {
 
    const [rooms, setRooms] = useState([]);
 
+   const [bookRooms, setBookRooms] = useState([]);
+
    const room = useLoaderData()
 
     
@@ -20,8 +22,24 @@ const Room = () => {
    useEffect(() =>{
     fetch('http://localhost:5000/rooms')
     .then(res =>res.json())
-    .then(data => setRooms(data))
+    .then(data =>  {
+      setRooms(data)
+    
+    })
    }, [])
+
+   useEffect(() =>{
+    fetch('http://localhost:5000/booking')
+    .then(res =>res.json())
+    .then(data =>  {
+      setBookRooms(data)
+
+    
+    })
+   }, [])
+
+  
+
 
 
 
@@ -37,6 +55,10 @@ const filterItem = (item) =>{
     }
   
 }
+
+
+
+
 
 
 const handlePriceFilter = (e) =>{
@@ -91,6 +113,9 @@ const handlePriceFilter = (e) =>{
 
      <div className="grid grid-cols-6 justify-center items-center gap-6">
         <button className="btn btn-warning" onClick={() =>setRooms(room)}>All</button>
+
+
+
 
 
         {

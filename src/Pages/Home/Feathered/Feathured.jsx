@@ -20,7 +20,7 @@ const Feathured = () => {
 
 
 
-console.log(featuredRoom);
+// console.log(featuredRoom);
     
 
 

@@ -4,12 +4,18 @@ import { Link } from 'react-router-dom';
 
 const MyBookList = ({roomBook, deleteHandle}) => {
     const {_id, id, Image, price, RoomDescription, bookDate,bookingSeat, day, chekOutDate, roomSiz, roomCost, seat, avilitySeat} = roomBook || []
-    console.log(roomBook);
+
+
+
+
     return (
         <div>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
+
+
+
     
     <tbody>
     
@@ -32,7 +38,7 @@ const MyBookList = ({roomBook, deleteHandle}) => {
         <td>Price: {price}$</td>
         <td>After Discount: {roomCost}$</td>
         <th>
-          <button className="btn btn-warning btn-xs">Update</button>
+          <Link to={`/update/${_id}`}><button className="btn btn-warning btn-xs">Update</button></Link>
         </th>
         <th>
           <button className="btn btn-info btn-xs" onClick={() =>deleteHandle(_id)}>X</button>

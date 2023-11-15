@@ -37,7 +37,7 @@ const MyBook = () => {
                
                 if (data.deletedCount > 0) {
                     Swal.fire({
-                        icon: 'danger',
+                        icon: 'warning',
                         title: 'Delete',
                         text: 'Dlete has been sucessfully',
                       })
@@ -48,6 +48,8 @@ const MyBook = () => {
             })
         }
     }
+
+   
 
 
 
