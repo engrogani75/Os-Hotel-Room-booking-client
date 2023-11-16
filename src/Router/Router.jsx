@@ -36,13 +36,13 @@ const router = createBrowserRouter([
         {
           path: "/rooms",
          element: <Room></Room>,
-         loader: () =>fetch('http://localhost:5000/rooms')
+         loader: () =>fetch('https://hotel-book-server-project.vercel.app/rooms')
         },
 
         {
           path: "/rooms/:id",
          element: <RoomDetails></RoomDetails>,
-         loader: ({params}) => fetch(`http://localhost:5000/rooms/${params.id}`)
+         loader: ({params}) => fetch(`https://hotel-book-server-project.vercel.app/rooms/${params.id}`)
         },
 
         {
@@ -53,14 +53,14 @@ const router = createBrowserRouter([
         {
           path: "/review/:id",
           element: <PrivateRouter><Review></Review></PrivateRouter>,
-          loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`)
+          loader: ({params}) => fetch(`https://hotel-book-server-project.vercel.app/review/${params.id}`)
         },
 
 
         {
           path: "/update/:id",
           element: <PrivateRouter><Update></Update></PrivateRouter>,  
-          loader: ({params}) => fetch(`http://localhost:5000/update/${params.id}`)
+          loader: ({params}) => fetch(`https://hotel-book-server-project.vercel.app/update/${params.id}`)
           
         },
 

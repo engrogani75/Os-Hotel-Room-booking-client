@@ -77,7 +77,7 @@ const AuthProvider = ({children}) => {
 
             if (currentUser) {
                
-                axios.post('http://localhost:5000/jwt', loggedUser, {withCredentials: true})
+                axios.post('https://hotel-book-server-project.vercel.app/jwt', loggedUser, {withCredentials: true})
                 .then(res => {
                     console.log('token responding', res.data);
                 })
@@ -85,7 +85,7 @@ const AuthProvider = ({children}) => {
 
             else{
 
-                axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
+                axios.post('https://hotel-book-server-project.vercel.app/logout', loggedUser, {withCredentials: true})
                 .then(res => {
                     console.log('token responding clear', res.data);
                 })

@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([])
 
-  const url = `http://localhost:5000/review-customer`
+  const url = `https://hotel-book-server-project.vercel.app/review-customer`
 
   useEffect(() =>{
     fetch(url)
