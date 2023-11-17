@@ -5,8 +5,11 @@ import RoomTab from './RoomTab/RoomTab';
 import Gallery from './Gallery/Gallery';
 import { useLoaderData } from 'react-router-dom';
 import useAxiosHook from '../../CustoomHook/useAxiosHook';
+import { Helmet } from 'react-helmet';
 
 const Room = () => {
+
+ 
 
     const [minPrice, setMinPrice] = useState(150);
     const [maxPrice, setMaxPrice] = useState(1000);
@@ -56,6 +59,12 @@ const handlePriceFilter = (e) =>{
 
 
     return <>
+
+      
+  <Helmet>
+  <title>Rooms / Hotel booking</title>
+ 
+</Helmet>
 
     <div className='my-6'>
     <form onSubmit={handlePriceFilter}>

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MyBookList from "./MyBookList";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet";
 
 
 const MyBook = () => {
@@ -60,7 +61,11 @@ const MyBook = () => {
     return (
         <div>
 
-          
+            
+  <Helmet>
+  <title>My Booking / Hotel booking</title>
+ 
+</Helmet>
             
             {
                 booking.map(roomBook => <MyBookList key={roomBook._id} roomBook={roomBook} deleteHandle={deleteHandle}></MyBookList>)
