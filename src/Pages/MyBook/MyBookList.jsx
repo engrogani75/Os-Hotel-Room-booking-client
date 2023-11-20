@@ -1,10 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 const MyBookList = ({roomBook, deleteHandle}) => {
-    const {_id, id, Image, price, RoomDescription, bookDate, bookingSeat, day, chekOutDate, roomSiz, roomCost, seat, avilitySeat} = roomBook || []
+    const {_id, id, Image, price, RoomDescription, bookDate, chekOutDate, bookingSeat,  roomSiz, roomCost, seat, avilitySeat, dayCount, status} = roomBook || []
 
+
+    const duration =(moment(chekOutDate, 'DD-MM-YYYY')).diff(moment(bookDate, 'DD-MM-YYYY'), 'days');
+
+    const [cancelBook, setCancelBook] = useState([])
+
+    console.log(dayCount);
+
+
+
+    const cancelHandle =(id) =>{
+     if (dayCount > 1) {
+      const proced = confirm('are you sure confirm it')
+      if (proced) {
+        fetch(`http://localhost:5000/booking/update/${_id}`, {
+          method: "PATCH",
+          headers: {
+              'content-type': 'application/json',           
+          },
+          body:JSON.stringify({status: 'Booking Cancel'})
+
+        })
+        .then(res => res.json())  
+        .then(data => {
+          if (data.modifiedCount>0) {
+              alert("confirm this")
+              let updated = []
+              updated.status ="Booking Cancel"
+              const newUpdated = [updated]
+              setCancelBook(newUpdated)
+          }
+        })
+      }
+     }
+     else{
+      return alert("You can not cancel this room booked")
+     }
+    }
+
+    console.log(cancelBook.status);
+  
 
 
 
@@ -23,7 +63,7 @@ const MyBookList = ({roomBook, deleteHandle}) => {
         <td>
           <div className="flex items-center space-x-3">
             <div>
-              <div className="mask  w-24 ">
+              <div className="mask  w-16 ">
                 <img src={Image} className='w-[100%]'/>
               </div>
               <span>{RoomDescription}</span>
@@ -33,18 +73,24 @@ const MyBookList = ({roomBook, deleteHandle}) => {
         </td>
       
       
-        <td>Duration: {day} days</td>
+        <td>Duration: {duration} days</td>
         <td>Seat: {bookingSeat}</td>
-        <td>Price: {price}$</td>
         <td>After Discount: {roomCost}$</td>
         <th>
-          <Link to={`/update/${_id}`}><button className="btn btn-warning btn-xs">Update</button></Link>
+          <Link to={`/update/${_id}`}><button className="btn btn-warning btn-xs">Update booking</button></Link>
         </th>
         <th>
           <button className="btn btn-info btn-xs" onClick={() =>deleteHandle(_id)}>X</button>
         </th>
         <th>
           <Link to={`/review/${_id}`}><button className="btn btn-info btn-xs">review</button></Link>
+        </th>
+        <th>
+          {/* <button className="btn btn-info btn-xs" onClick={() =>cancelHandle(id)}>booked</button> */}
+
+        {
+            status === 'Booking Cancel'? <button className="btn btn-info btn-xs">bookin Cancel</button>:<button className="btn btn-info btn-xs" onClick={() =>cancelHandle(id)}>booked</button>
+        }
         </th>
       </tr>
    

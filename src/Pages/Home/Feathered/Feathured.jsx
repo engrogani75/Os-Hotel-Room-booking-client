@@ -6,7 +6,7 @@ const Feathured = () => {
 
     const [featuredRoom, setFeaturedRoom] = useState([])
 
-    const url = `https://hotel-book-server-project.vercel.app/rooms`;
+    const url = `http://localhost:5000/rooms`;
 
     useEffect(() =>{
         fetch(url)

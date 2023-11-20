@@ -15,25 +15,29 @@ const RoomDetails = () => {
   const {user} = useContext(AuthContext)
     const RoomDetails = useLoaderData()
 
+
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
     const [dayCount, setDayCount] = useState(0);
 
-    const [bookRooms, setBookRooms] = useState([]);
+   
 
+    const [book, setBooks] = useState([])
+
+
+
+
+  const url = `http://localhost:5000/booking`
+  
+  useEffect(() =>{
+   fetch(url)
+   .then(res =>res.json())
+   .then(data => {
     
-  
-    const url = `https://hotel-book-server-project.vercel.app/booking/${user?.email}`
-  
-    useEffect(() =>{
-     fetch(url)
-     .then(res =>res.json())
-     .then(data => {
-      
-       setBookRooms(data)
-     })
-  }, [url])
+     setBooks(data)
+   })
+}, [url])
 
 
 
@@ -69,7 +73,7 @@ const RoomDetails = () => {
 
   
 
-    const {_id, Price, RoomDescription, RoomSize, Availability, Discount, Image,  Description} = RoomDetails || []
+    const {_id, Price, RoomDescription, RoomSize, Availability, Discount, Image,  Description, seat} = RoomDetails || []
     // console.log('booking room', bookRooms);
 
     // console.log('booking id', _id);
@@ -80,22 +84,62 @@ const bookHandle = (e) => {
 
   e.preventDefault();
   if (user?.email) {
-   const form = e.target;
-   const bookingSeat = form.bed.value;
-   const avilitySeat = Availability
-   const seat = avilitySeat - bookingSeat
-   const bookDate = startDate ? moment(startDate).format('DD-MM-YYYY') : '';
-   const chekOutDate = endDate ? moment(endDate).format('DD-MM-YYYY') : ''
-   const price = Price
-   const roomSize = RoomSize
-   const discount = Discount/100;
-   const roomCost = price-discount*price
-   const id = _id;
-   const email = user.email
- 
-   if (bookDate === chekOutDate) {
-     return alert('pls select the chekout date')
-   }
+
+
+    const form = e.target;
+    const bookingSeat = form.bed.value;
+    const avilitySeat = Availability
+    const seat = avilitySeat - bookingSeat
+    const bookDate = startDate ? moment(startDate).format('DD-MM-YYYY') : '';
+    const chekOutDate = endDate ? moment(endDate).format('DD-MM-YYYY') : ''
+    const price = Price
+    const roomSize = RoomSize
+    const discount = Discount/100;
+    const roomCost = price-discount*price
+    const id = _id;
+    const email = user.email
+
+    if (Availability < bookingSeat) {
+      return Swal.fire({
+        icon: 'warning',
+        title: 'Not Enough!',
+        text: 'You can not select more than avilable Seat',
+      })
+    }
+
+    if (bookDate === chekOutDate) {
+      return Swal.fire({
+       icon: 'warning',
+       title: 'Wrong Date!',
+       text: 'Pls select correct date',
+     })
+    }
+
+    if (seat === 0 ) {
+      return Swal.fire({
+        icon: 'warning',
+        title: 'Already Booked!',
+        text: 'Pls select another room',
+      })
+    }
+  
+
+    const updateRoom = {seat, bookDate, chekOutDate, email }
+
+
+    fetch(`http://localhost:5000/rooms/updateAvailability/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updateRoom),
+    })
+
+    .then((res) => res.json())
+    .then((data) =>{
+      if (data.modifiedCount > 0){
+
+    
  
   const booking = {
    avilitySeat,
@@ -119,7 +163,7 @@ const bookHandle = (e) => {
  //  console.log(booking);
  
  
-  fetch('https://hotel-book-server-project.vercel.app/booking',{
+  fetch('http://localhost:5000/booking',{
  
   method: 'POST',
   headers:{
@@ -138,69 +182,15 @@ const bookHandle = (e) => {
        })
      }
  })
+      }
+    })
+   
  
  
   }
  
-  else{
-   return <Navigate to='/login' replace></Navigate>
-  }
-
-
 
 }
-
-
-
-// const bookingHandle = (id) =>{
-
-
-//     const bookDate = startDate ? moment(startDate).format('DD-MM-YYYY') : '';
-//     const chekOutDate = endDate ? moment(endDate).format('DD-MM-YYYY') : ''
-//     const email = user.email
-    
-//       const booking = {
-//         bookDate,
-//         chekOutDate,
-//         dayCount,
-//         email
-//        }
-    
-//     console.log(booking);
-    
-//       fetch(`https://hotel-book-server-project.vercel.app/room/update/${id}`, {
-//             method: 'PUT',
-//             headers:{
-//                 'content-type': 'application/json',
-//             },
-//             body: JSON.stringify(booking )
-//         })
-    
-//         .then(res => res.json())
-    
-//         .then(data => {
-//           console.log(data);
-//           if (data.modifiedCount > 0) {
-//             Swal.fire({
-//               icon: 'success',
-//               title: 'Updated',
-//               text: 'Product Update has been sucessfully',
-//             })
-            
-//           }
-//       })
-   
-
-
-
-
-
-// }
-
-
-
-
-
 
 
 
@@ -214,7 +204,9 @@ const bookHandle = (e) => {
     <p className='text-xl'>Size: {RoomSize}</p>
    <div className='flex gap-6'>
    <p>Bed: {Availability}</p>
+   <p>Available Seat: {seat?<>{seat}</>:<>{Availability}</>}</p>
     <p>Discount:{Discount}%</p>
+
    
    </div>
 
@@ -229,10 +221,11 @@ const bookHandle = (e) => {
 <form className='flex flex-col justify-center items-center' onSubmit={bookHandle}>
 <div className='flex gap-3'>
    <div className="mb-3">
-          <label className="text-lg">Select Bed:</label>
+          <label className="text-lg">Total Bed:</label>
 
           <input type="number" defaultValue={Availability} name='bed' className='w-10 text-center py-1' />
         </div>
+
 
   
 
@@ -255,15 +248,10 @@ const bookHandle = (e) => {
 </div>
 
 
-
-{/* onClick={() => bookingHandle(_id)} */}
-
-
-<input type="submit"  value="Book Now" className='text-center py-1 cursor-pointer btn btn-warning' />
-
-   {/* {
-    user?.email? <input type="submit" value="Book Now" className='text-center py-1 cursor-pointer btn btn-warning' />: <><input type="text" value="Book Now" className='text-center py-1 cursor-pointer btn btn-warning' /></>
-   } */}
+   {
+    user?.email?<><input type="submit" value="Book Now" className='text-center py-1 cursor-pointer btn btn-warning' /></>:
+    <><Link to='/login'><input type="text" value="Book Now" className='text-center py-1 cursor-pointer btn btn-warning' /></Link></>
+   }
 
 </form>
 

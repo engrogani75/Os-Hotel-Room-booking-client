@@ -44,7 +44,7 @@ const Review = () => {
 
 
     
- fetch('https://hotel-book-server-project.vercel.app/review-customer',{
+ fetch('http://localhost:5000/review-customer',{
 
  method: 'POST',
  headers:{
