@@ -67,7 +67,7 @@ console.log(updateRoom);
 
 
 
-fetch(`http://localhost:5000/rooms/updateAvailability/${id}`, {
+fetch(`https://hotel-book-server-project.vercel.app/rooms/updateAvailability/${id}`, {
   method: 'PUT',
   headers: {
     'content-type': 'application/json',
@@ -84,7 +84,7 @@ fetch(`http://localhost:5000/rooms/updateAvailability/${id}`, {
       bookingSeat, seat, bookDate, chekOutDate, dayCount
     }
 
-    fetch(`http://localhost:5000/booking/update/${_id}`, {
+    fetch(`https://hotel-book-server-project.vercel.app/booking/update/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

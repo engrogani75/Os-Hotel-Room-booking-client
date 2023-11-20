@@ -28,7 +28,7 @@ const RoomDetails = () => {
 
 
 
-  const url = `http://localhost:5000/booking`
+  const url = `https://hotel-book-server-project.vercel.app/booking`
   
   useEffect(() =>{
    fetch(url)
@@ -127,7 +127,7 @@ const bookHandle = (e) => {
     const updateRoom = {seat, bookDate, chekOutDate, email }
 
 
-    fetch(`http://localhost:5000/rooms/updateAvailability/${_id}`, {
+    fetch(`https://hotel-book-server-project.vercel.app/rooms/updateAvailability/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -163,7 +163,7 @@ const bookHandle = (e) => {
  //  console.log(booking);
  
  
-  fetch('http://localhost:5000/booking',{
+  fetch('https://hotel-book-server-project.vercel.app/booking',{
  
   method: 'POST',
   headers:{

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyBookList = ({roomBook, deleteHandle}) => {
-    const {_id, id, Image, price, RoomDescription, bookDate, chekOutDate, bookingSeat,  roomSiz, roomCost, seat, avilitySeat, dayCount, status} = roomBook || []
+    const {_id, id, Image,  RoomDescription, bookDate, chekOutDate, bookingSeat, roomCost, dayCount, status} = roomBook || []
 
 
     const duration =(moment(chekOutDate, 'DD-MM-YYYY')).diff(moment(bookDate, 'DD-MM-YYYY'), 'days');
@@ -18,7 +19,7 @@ const MyBookList = ({roomBook, deleteHandle}) => {
      if (dayCount > 1) {
       const proced = confirm('are you sure confirm it')
       if (proced) {
-        fetch(`http://localhost:5000/booking/update/${_id}`, {
+        fetch(`https://hotel-book-server-project.vercel.app/booking/update/${_id}`, {
           method: "PATCH",
           headers: {
               'content-type': 'application/json',           
@@ -29,7 +30,11 @@ const MyBookList = ({roomBook, deleteHandle}) => {
         .then(res => res.json())  
         .then(data => {
           if (data.modifiedCount>0) {
-              alert("confirm this")
+            Swal.fire({
+              icon: 'warning',
+              title: 'Sure!',
+              text: 'Are you sure?',
+            })
               let updated = []
               updated.status ="Booking Cancel"
               const newUpdated = [updated]
@@ -39,11 +44,15 @@ const MyBookList = ({roomBook, deleteHandle}) => {
       }
      }
      else{
-      return alert("You can not cancel this room booked")
+      Swal.fire({
+        icon: 'success',
+        title: 'cancel',
+        text: 'You book has been cancel',
+      })
      }
     }
 
-    console.log(cancelBook.status);
+ 
   
 
 
@@ -52,7 +61,7 @@ const MyBookList = ({roomBook, deleteHandle}) => {
         <div>
             <div className="overflow-x-auto">
   <table className="table">
-    {/* head */}
+ 
 
 
 
@@ -86,7 +95,7 @@ const MyBookList = ({roomBook, deleteHandle}) => {
           <Link to={`/review/${_id}`}><button className="btn btn-info btn-xs">review</button></Link>
         </th>
         <th>
-          {/* <button className="btn btn-info btn-xs" onClick={() =>cancelHandle(id)}>booked</button> */}
+         
 
         {
             status === 'Booking Cancel'? <button className="btn btn-info btn-xs">bookin Cancel</button>:<button className="btn btn-info btn-xs" onClick={() =>cancelHandle(id)}>booked</button>
@@ -107,22 +116,3 @@ const MyBookList = ({roomBook, deleteHandle}) => {
 
 export default MyBookList;
 
-{/* <div>
-<div className="carousel carousel-end rounded-box my-6">
-
-{
-testimonials.map(review => <>
-<div className="carousel-item overflow-x-hidden">
-
-  <div className="w-64 ml-4 bottom-2 rounded-xl overflow-x-hidden">
-
-    {review.reviewText}
-  </div>
-
-</div> 
-
-</>)
-}
-
-</div>
-</div> */}

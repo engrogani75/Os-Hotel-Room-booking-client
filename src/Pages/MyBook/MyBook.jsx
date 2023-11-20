@@ -12,7 +12,7 @@ const MyBook = () => {
 
     const [booking, setBooking] = useState([])
 
-    const url = `http://localhost:5000/booking/${user?.email}`
+    const url = `https://hotel-book-server-project.vercel.app/booking/${user?.email}`
 
     useEffect(() =>{
         fetch(url, {credentials: 'include'})
@@ -30,7 +30,7 @@ const MyBook = () => {
 
         
         if (proced) {
-            fetch(`http://localhost:5000/booking/${id}`, {
+            fetch(`https://hotel-book-server-project.vercel.app/booking/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
